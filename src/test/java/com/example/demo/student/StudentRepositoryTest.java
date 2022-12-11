@@ -19,7 +19,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void itShouldCheckIfStudentEmailExist() {
+    void itShouldCheckWhenStudentEmailExist() {
         // given
         String email = "mery@gmail.com";
         Student student = new Student(
@@ -37,7 +37,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void itShouldCheckIfStudentEmailDoesNotExist() {
+    void itShouldCheckWhenStudentEmailDoesNotExist() {
 
         // given
         String email = "meryy@gmail.com";
