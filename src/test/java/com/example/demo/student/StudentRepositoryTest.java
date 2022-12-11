@@ -23,8 +23,8 @@ class StudentRepositoryTest {
         // given
         String email = "mery@gmail.com";
         Student student = new Student(
+                "Mery",
                 email,
-                "mery@gmail.com",
                 Gender.FEMALE
         );
         underTest.save(student);
