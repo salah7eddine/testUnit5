@@ -11,11 +11,11 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class StudentRepositoryTest {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentRepository underTest;
 
     @AfterEach
     void tearDown() {
-        studentRepository.deleteAll();
+        underTest.deleteAll();
     }
 
     @Test
@@ -27,10 +27,10 @@ class StudentRepositoryTest {
                 "mery@gmail.com",
                 Gender.FEMALE
         );
-        studentRepository.save(student);
+        underTest.save(student);
 
         // when
-        Boolean expected = studentRepository.selectExistsEmail(email);
+        Boolean expected = underTest.selectExistsEmail(email);
 
         // then
         assertThat(expected).isTrue();
@@ -43,7 +43,7 @@ class StudentRepositoryTest {
         String email = "meryy@gmail.com";
 
         // when
-        Boolean expected = studentRepository.selectExistsEmail(email);
+        Boolean expected = underTest.selectExistsEmail(email);
 
         // then
         assertThat(expected).isFalse();
