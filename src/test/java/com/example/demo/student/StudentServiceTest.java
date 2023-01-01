@@ -92,6 +92,30 @@ class StudentServiceTest {
 
         verify(studentRepository, never()).save(any());
     }
+    @Test
+    void canGetStudentById() {
+        // given
+        String email = "mery@gmail.com";
+        String name = "Mery";
+        Student student = new Student(
+                name,
+                email,
+                Gender.FEMALE
+        );
+
+        given(studentRepository.getOne(anyLong()))
+                .willReturn(student);
+        given(studentRepository.existsById(anyLong()))
+                .willReturn(true);
+        // when
+        Student student1 = underTest.getStudentById(anyLong());
+        // then
+        assertThat(student1.getName()).isEqualTo("Mery");
+        assertThat(student1.getEmail()).isEqualTo("mery@gmail.com");
+        assertThat(student1.getGender()).isEqualTo(Gender.FEMALE);
+
+    }
+
 
     @Test
     void deleteStudent() {

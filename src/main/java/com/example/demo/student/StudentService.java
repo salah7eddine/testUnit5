@@ -37,4 +37,12 @@ public class StudentService {
         }
         studentRepository.deleteById(studentId);
     }
+
+    public Student getStudentById(Long studentId) {
+        if(!studentRepository.existsById(studentId)) {
+            throw new StudentNotFoundException(
+                    "Student with id " + studentId + " does not exists");
+        }
+        return studentRepository.getOne(studentId);
+    }
 }

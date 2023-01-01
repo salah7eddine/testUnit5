@@ -18,6 +18,9 @@ class StudentRepositoryTest {
         underTest.deleteAll();
     }
 
+
+
+
     @Test
     void itShouldCheckWhenStudentEmailExist() {
         // given
@@ -34,6 +37,26 @@ class StudentRepositoryTest {
 
         // then
         assertThat(expected).isTrue();
+    }
+
+    @Test
+    void findStudentByNameTest() {
+        // given
+        String name = "Mery";
+        String email = "mery@gmail.com";
+        Student student = new Student(
+                name,
+                email,
+                Gender.FEMALE
+        );
+        underTest.save(student);
+        // when
+        Student studentSaved = underTest.findStudentByName(name);
+
+
+        // then
+        assertThat(studentSaved).isNotNull();
+        assertThat(studentSaved.getName()).isEqualTo(name);
     }
 
     @Test
