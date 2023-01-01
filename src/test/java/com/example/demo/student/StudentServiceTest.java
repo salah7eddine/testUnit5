@@ -45,7 +45,6 @@ class StudentServiceTest {
         underTest.getAllStudents();
         // then
         verify(studentRepository).findAll();
-
     }
 
     @Test
