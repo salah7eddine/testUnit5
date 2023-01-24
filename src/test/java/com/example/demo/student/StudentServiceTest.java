@@ -110,10 +110,14 @@ class StudentServiceTest {
         // when
         Student student1 = underTest.getStudentById(anyLong());
         // then
+        assertStudentFields(student1);
+
+    }
+
+    private static void assertStudentFields(Student student1) {
         assertThat(student1.getName()).isEqualTo("Mery");
         assertThat(student1.getEmail()).isEqualTo("mery@gmail.com");
         assertThat(student1.getGender()).isEqualTo(Gender.FEMALE);
-
     }
 
 
